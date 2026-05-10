@@ -1,5 +1,10 @@
 # Company Platform CLI MVP
-
+/**
+ * O CLI global é configurado em 2 locais:
+ * 1-bin no package.json é mayongi-factory que redireciona para  dist/index.ts
+ *2-Utilizar shebang no entrypoint shebang: #!/usr/bin/env node
+ 3-npm link cria um link global do comando mayongi-factory para esse dist/index.json
+ * **/
 CLI em Node.js + TypeScript para geração rápida de projetos backend com base em templates corporativos.
 
 ## Objetivo do MVP
