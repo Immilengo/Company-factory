@@ -1,19 +1,22 @@
 import path from 'path';
 import fs from 'fs-extra';
+import { fileURLToPath } from 'url';
 import { PlaceholderValues, SupportedTemplate } from '../types/template.types.js';
 import { TEMPLATE_PORT_MAP } from '../utils/constants.js';
 import { replacePlaceholdersInDirectory } from '../utils/placeholder.util.js';
 
-const ROOT_DIR = process.cwd();
-const TEMPLATES_DIR = path.join(ROOT_DIR, 'templates');
-const GENERATED_DIR = path.join(ROOT_DIR, 'generated-projects');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const RUNTIME_CWD = process.cwd();
+const TEMPLATES_DIR = path.resolve(__dirname, '../../templates');
 
 function getTemplatePath(template: string): string {
   return path.join(TEMPLATES_DIR, template);
 }
 
 function getProjectPath(projectName: string): string {
-  return path.join(GENERATED_DIR, projectName);
+  return path.join(RUNTIME_CWD, projectName);
 }
 
 export async function validateTemplate(template: string): Promise<void> {
@@ -57,7 +60,7 @@ export async function copyTemplate(template: string, projectName: string): Promi
   const templatePath = getTemplatePath(template);
   const projectPath = getProjectPath(projectName);
 
-  await fs.ensureDir(GENERATED_DIR);
+  await fs.ensureDir(RUNTIME_CWD);
   await fs.copy(templatePath, projectPath);
 
   return projectPath;

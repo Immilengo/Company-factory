@@ -58,7 +58,7 @@ export async function createCommand(projectName: string, template: string): Prom
 
     console.log(chalk.green('\nProjeto criado com sucesso!'));
     console.log(chalk.white(`Local: ${projectPath}`));
-    console.log(chalk.blue(`\nPróximo passo: cd generated-projects/${projectName}`));
+    console.log(chalk.blue(`\nPróximo passo: cd ${projectName}`));
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unexpected error';
     console.error(chalk.red(`❌ ${message}`));
