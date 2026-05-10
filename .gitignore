@@ -1,0 +1,5 @@
+.codex
+.agents
+dist
+node_modules
+generated-projects
