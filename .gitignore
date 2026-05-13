@@ -3,3 +3,5 @@
 dist
 node_modules
 generated-projects
+templates/express/.env
+templates/springboot/.env

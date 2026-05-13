@@ -1,6 +1,0 @@
-spring:
-  application:
-    name: {{PROJECT_NAME}}
-
-server:
-  port: {{APP_PORT}}

@@ -1,0 +1,41 @@
+{
+  "info": {
+    "name": "Company Core Template API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "{{baseUrl}}/public/auth/login", "host": ["{{baseUrl}}"], "path": ["public", "auth", "login"]},
+        "body": {"mode": "raw", "raw": "{\n  \"email\": \"admin@company.com\",\n  \"password\": \"Admin123@\"\n}"}
+      }
+    },
+    {
+      "name": "Users - Set Profile Image",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Authorization", "value": "Bearer {{accessToken}}"}, {"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "{{baseUrl}}/api/users/{{userId}}/profile-image", "host": ["{{baseUrl}}"], "path": ["api", "users", "{{userId}}", "profile-image"]},
+        "body": {"mode": "raw", "raw": "{\n  \"url\": \"https://cdn.company.com/users/avatar1.png\",\n  \"fileName\": \"avatar1.png\",\n  \"contentType\": \"image/png\",\n  \"sizeBytes\": 42000,\n  \"sortOrder\": 0\n}"}
+      }
+    },
+    {
+      "name": "Images - Product Add Image",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Authorization", "value": "Bearer {{accessToken}}"}, {"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "{{baseUrl}}/api/images/PRODUCT/{{productId}}", "host": ["{{baseUrl}}"], "path": ["api", "images", "PRODUCT", "{{productId}}"]},
+        "body": {"mode": "raw", "raw": "{\n  \"url\": \"https://cdn.company.com/products/p1-01.jpg\",\n  \"fileName\": \"p1-01.jpg\",\n  \"contentType\": \"image/jpeg\",\n  \"sizeBytes\": 98000,\n  \"primaryImage\": true,\n  \"sortOrder\": 1\n}"}
+      }
+    }
+  ],
+  "variable": [
+    {"key": "baseUrl", "value": "http://localhost:8080"},
+    {"key": "accessToken", "value": ""},
+    {"key": "userId", "value": ""},
+    {"key": "productId", "value": ""}
+  ]
+}
